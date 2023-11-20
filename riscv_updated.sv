@@ -77,8 +77,8 @@ alu my_alu(
 PCReg my_PCReg(
     .PC(pc),
     .next_PC(next_pc)
-)
-
+);
+    
 PCsrc my_PCsrc(
     .branch_PC(branch_pc),
     .inc_PC(inc_pc),
