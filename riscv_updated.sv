@@ -74,7 +74,16 @@ alu my_alu(
     .eq(eq)
 );
 
-//reg for pc
-//mux for pc
+PCReg my_PCReg(
+    .PC(pc),
+    .next_PC(next_pc),
+)
+
+PCsrc my_PCsrc(
+    .branch_PC(branch_pc),
+    .inc_PC(inc_pc),
+    .out(next_pc)
+)
+
 
 endmodule
