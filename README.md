@@ -24,3 +24,7 @@ The testbench simulated a rst input for 4 clock cycles. The waveform shows that 
 ### Reaching Max Count
 ![max](/images/max.jpg)
 When the counter reached 255, the counter resets back to zero successfully. These waveforms show that the CPU is working as intended
+
+## Optional ``lw`` Instruction
+![sine](/images/sine.jpg)
+The ``lw`` instruction was implemented. The instruction was tested on Vbuddy and the sine wave was successfully generated.

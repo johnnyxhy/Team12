@@ -54,6 +54,9 @@ int main(int argc, char **argv, char **env){
         top->rst = 0;
     }
 
+    // For lw sine wave testing
+    vbdPlot(int(top->a0),0,255);
+
     if(Verilated::gotFinish() || (vbdGetkey()=='q')) 
         exit(0);
 
