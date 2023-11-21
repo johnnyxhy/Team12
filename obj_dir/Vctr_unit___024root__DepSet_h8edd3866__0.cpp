@@ -15,20 +15,23 @@ VL_INLINE_OPT void Vctr_unit___024root___combo__TOP__0(Vctr_unit___024root* vlSe
         vlSelf->RegWrite = 1U;
         vlSelf->ALUctrl = 0U;
         vlSelf->ALUsrc = 1U;
-        vlSelf->ImmSrc = (vlSelf->instr >> 0x14U);
+        vlSelf->ImmSrc = 0U;
+        vlSelf->data_src = 0U;
         vlSelf->PCsrc = 0U;
     } else if ((0x18U == (0x1fU & (vlSelf->instr >> 2U)))) {
         vlSelf->RegWrite = 0U;
         vlSelf->ALUctrl = 1U;
         vlSelf->ALUsrc = 0U;
-        vlSelf->ImmSrc = ((0x800U & (vlSelf->instr 
-                                     << 4U)) | ((0x7e0U 
-                                                 & (vlSelf->instr 
-                                                    >> 0x14U)) 
-                                                | (0x1eU 
-                                                   & (vlSelf->instr 
-                                                      >> 7U))));
+        vlSelf->ImmSrc = 2U;
+        vlSelf->data_src = 0U;
         vlSelf->PCsrc = (1U & (~ (IData)(vlSelf->eq)));
+    } else if ((0U == (0x1fU & (vlSelf->instr >> 2U)))) {
+        vlSelf->RegWrite = 1U;
+        vlSelf->ALUctrl = 0U;
+        vlSelf->ALUsrc = 1U;
+        vlSelf->ImmSrc = 0U;
+        vlSelf->data_src = 1U;
+        vlSelf->PCsrc = 0U;
     }
 }
 

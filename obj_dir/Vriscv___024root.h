@@ -18,10 +18,11 @@ class Vriscv___024root final : public VerilatedModule {
     CData/*0:0*/ riscv__DOT__RegWrite;
     CData/*2:0*/ riscv__DOT__ALUctrl;
     CData/*0:0*/ riscv__DOT__ALUsrc;
+    CData/*1:0*/ riscv__DOT__ImmSrc;
     CData/*0:0*/ riscv__DOT__PCsrc;
+    CData/*0:0*/ riscv__DOT__data_src;
     CData/*0:0*/ riscv__DOT__eq;
     CData/*0:0*/ __Vclklast__TOP__clk;
-    SData/*11:0*/ riscv__DOT__ImmSrc;
     VL_OUT(a0,31,0);
     IData/*31:0*/ riscv__DOT__pc;
     IData/*31:0*/ riscv__DOT__next_pc;
@@ -32,6 +33,7 @@ class Vriscv___024root final : public VerilatedModule {
     IData/*31:0*/ riscv__DOT__aluout;
     VlUnpacked<IData/*31:0*/, 32> riscv__DOT__my_instr_mem__DOT__ram;
     VlUnpacked<IData/*31:0*/, 32> riscv__DOT__my_regfile__DOT__register_array;
+    VlUnpacked<IData/*31:0*/, 256> riscv__DOT__my_data_mem__DOT__ram;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES

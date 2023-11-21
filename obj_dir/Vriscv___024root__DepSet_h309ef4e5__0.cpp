@@ -18,7 +18,10 @@ VL_INLINE_OPT void Vriscv___024root___sequent__TOP__0(Vriscv___024root* vlSelf) 
     __Vdlyvset__riscv__DOT__my_regfile__DOT__register_array__v0 = 0U;
     if (vlSelf->riscv__DOT__RegWrite) {
         __Vdlyvval__riscv__DOT__my_regfile__DOT__register_array__v0 
-            = vlSelf->riscv__DOT__aluout;
+            = ((IData)(vlSelf->riscv__DOT__data_src)
+                ? vlSelf->riscv__DOT__my_data_mem__DOT__ram
+               [(0xffU & vlSelf->riscv__DOT__aluout)]
+                : vlSelf->riscv__DOT__aluout);
         __Vdlyvset__riscv__DOT__my_regfile__DOT__register_array__v0 = 1U;
         __Vdlyvdim0__riscv__DOT__my_regfile__DOT__register_array__v0 
             = (0x1fU & (vlSelf->riscv__DOT__instr >> 7U));
@@ -30,7 +33,7 @@ VL_INLINE_OPT void Vriscv___024root___sequent__TOP__0(Vriscv___024root* vlSelf) 
             = __Vdlyvval__riscv__DOT__my_regfile__DOT__register_array__v0;
     }
     vlSelf->a0 = vlSelf->riscv__DOT__my_regfile__DOT__register_array
-        [0U];
+        [0xaU];
     vlSelf->riscv__DOT__instr = vlSelf->riscv__DOT__my_instr_mem__DOT__ram
         [(0x1fU & vlSelf->riscv__DOT__pc)];
     vlSelf->riscv__DOT__aluop1 = vlSelf->riscv__DOT__my_regfile__DOT__register_array
@@ -38,28 +41,50 @@ VL_INLINE_OPT void Vriscv___024root___sequent__TOP__0(Vriscv___024root* vlSelf) 
     if ((4U == (0x1fU & (vlSelf->riscv__DOT__instr 
                          >> 2U)))) {
         vlSelf->riscv__DOT__RegWrite = 1U;
+        vlSelf->riscv__DOT__data_src = 0U;
         vlSelf->riscv__DOT__ALUctrl = 0U;
         vlSelf->riscv__DOT__ALUsrc = 1U;
-        vlSelf->riscv__DOT__ImmSrc = (vlSelf->riscv__DOT__instr 
-                                      >> 0x14U);
+        vlSelf->riscv__DOT__ImmSrc = 0U;
     } else if ((0x18U == (0x1fU & (vlSelf->riscv__DOT__instr 
                                    >> 2U)))) {
         vlSelf->riscv__DOT__RegWrite = 0U;
+        vlSelf->riscv__DOT__data_src = 0U;
         vlSelf->riscv__DOT__ALUctrl = 1U;
         vlSelf->riscv__DOT__ALUsrc = 0U;
-        vlSelf->riscv__DOT__ImmSrc = ((0x800U & (vlSelf->riscv__DOT__instr 
-                                                 << 4U)) 
-                                      | ((0x7e0U & 
-                                          (vlSelf->riscv__DOT__instr 
-                                           >> 0x14U)) 
-                                         | (0x1eU & 
-                                            (vlSelf->riscv__DOT__instr 
-                                             >> 7U))));
+        vlSelf->riscv__DOT__ImmSrc = 2U;
+    } else if ((0U == (0x1fU & (vlSelf->riscv__DOT__instr 
+                                >> 2U)))) {
+        vlSelf->riscv__DOT__RegWrite = 1U;
+        vlSelf->riscv__DOT__data_src = 1U;
+        vlSelf->riscv__DOT__ALUctrl = 0U;
+        vlSelf->riscv__DOT__ALUsrc = 1U;
+        vlSelf->riscv__DOT__ImmSrc = 0U;
     }
-    vlSelf->riscv__DOT__immop = (((- (IData)((1U & 
-                                              ((IData)(vlSelf->riscv__DOT__ImmSrc) 
-                                               >> 0xbU)))) 
-                                  << 0xcU) | (IData)(vlSelf->riscv__DOT__ImmSrc));
+    vlSelf->riscv__DOT__immop = ((0U == (IData)(vlSelf->riscv__DOT__ImmSrc))
+                                  ? (((- (IData)((vlSelf->riscv__DOT__instr 
+                                                  >> 0x1fU))) 
+                                      << 0xcU) | (vlSelf->riscv__DOT__instr 
+                                                  >> 0x14U))
+                                  : ((2U == (IData)(vlSelf->riscv__DOT__ImmSrc))
+                                      ? (((- (IData)(
+                                                     (vlSelf->riscv__DOT__instr 
+                                                      >> 0x1fU))) 
+                                          << 0xcU) 
+                                         | ((0x800U 
+                                             & (vlSelf->riscv__DOT__instr 
+                                                << 4U)) 
+                                            | ((0x7e0U 
+                                                & (vlSelf->riscv__DOT__instr 
+                                                   >> 0x14U)) 
+                                               | (0x1eU 
+                                                  & (vlSelf->riscv__DOT__instr 
+                                                     >> 7U)))))
+                                      : (((- (IData)(
+                                                     (vlSelf->riscv__DOT__instr 
+                                                      >> 0x1fU))) 
+                                          << 0xcU) 
+                                         | (vlSelf->riscv__DOT__instr 
+                                            >> 0x14U))));
     vlSelf->riscv__DOT__aluop2 = ((IData)(vlSelf->riscv__DOT__ALUsrc)
                                    ? vlSelf->riscv__DOT__immop
                                    : vlSelf->riscv__DOT__my_regfile__DOT__register_array
@@ -82,6 +107,9 @@ VL_INLINE_OPT void Vriscv___024root___sequent__TOP__0(Vriscv___024root* vlSelf) 
     } else if ((0x18U == (0x1fU & (vlSelf->riscv__DOT__instr 
                                    >> 2U)))) {
         vlSelf->riscv__DOT__PCsrc = (1U & (~ (IData)(vlSelf->riscv__DOT__eq)));
+    } else if ((0U == (0x1fU & (vlSelf->riscv__DOT__instr 
+                                >> 2U)))) {
+        vlSelf->riscv__DOT__PCsrc = 0U;
     }
     vlSelf->riscv__DOT__next_pc = ((IData)(vlSelf->riscv__DOT__PCsrc)
                                     ? (vlSelf->riscv__DOT__pc 

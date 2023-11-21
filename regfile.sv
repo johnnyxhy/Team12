@@ -14,7 +14,7 @@ module regfile #(
     //asychronous READ ports
     assign rd1=register_array[ad1];
     assign rd2=register_array[ad2];
-    assign a0=register_array[{Addr_width{1'b0}}];
+    assign a0=register_array[{{Addr_width-4{1'b0}},4'b1010}];
 
     //synchronous WRITE ports 
     always_ff @(posedge clk)begin

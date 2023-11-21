@@ -15,8 +15,9 @@ Vctr_unit::Vctr_unit(VerilatedContext* _vcontextp__, const char* _vcname__)
     , RegWrite{vlSymsp->TOP.RegWrite}
     , ALUctrl{vlSymsp->TOP.ALUctrl}
     , ALUsrc{vlSymsp->TOP.ALUsrc}
-    , PCsrc{vlSymsp->TOP.PCsrc}
     , ImmSrc{vlSymsp->TOP.ImmSrc}
+    , PCsrc{vlSymsp->TOP.PCsrc}
+    , data_src{vlSymsp->TOP.data_src}
     , instr{vlSymsp->TOP.instr}
     , rootp{&(vlSymsp->TOP)}
 {

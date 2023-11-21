@@ -22,6 +22,8 @@ logic [WIDTH-1:0] aluop1;
 logic [WIDTH-1:0] aluop2;
 logic [WIDTH-1:0] regop2;
 logic [WIDTH-1:0] aluout;
+logic [WIDTH-1:0] branch_pc;
+logic [WIDTH-1:0] inc_pc;
 logic eq;
 logic [4:0] rs1;
 logic [4:0] rs2;
@@ -94,8 +96,8 @@ PCReg my_PCReg(
 );
     
 PCsrc my_PCsrc(
-    .branch_PC(pc+immop),
-    .inc_PC(pc+4),
+    .branch_PC(branch_pc),
+    .inc_PC(inc_pc),
     .out(next_pc),
     .sel(PCsrc)
 );

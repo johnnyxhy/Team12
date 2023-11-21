@@ -28,8 +28,9 @@ void Vctr_unit___024root__trace_chg_sub_0(Vctr_unit___024root* vlSelf, Verilated
     bufp->chgBit(oldp+2,(vlSelf->RegWrite));
     bufp->chgCData(oldp+3,(vlSelf->ALUctrl),3);
     bufp->chgBit(oldp+4,(vlSelf->ALUsrc));
-    bufp->chgSData(oldp+5,(vlSelf->ImmSrc),12);
+    bufp->chgCData(oldp+5,(vlSelf->ImmSrc),2);
     bufp->chgBit(oldp+6,(vlSelf->PCsrc));
+    bufp->chgBit(oldp+7,(vlSelf->data_src));
 }
 
 void Vctr_unit___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

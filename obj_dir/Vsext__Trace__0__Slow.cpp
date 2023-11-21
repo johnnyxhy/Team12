@@ -12,13 +12,12 @@ VL_ATTR_COLD void Vsext___024root__trace_init_sub__TOP__0(Vsext___024root* vlSel
     const int c = vlSymsp->__Vm_baseCode;
     // Body
     tracep->declBus(c+1,"instr", false,-1, 31,0);
-    tracep->declBus(c+2,"immsrc", false,-1, 11,0);
+    tracep->declBus(c+2,"immsrc", false,-1, 1,0);
     tracep->declBus(c+3,"imm_out", false,-1, 31,0);
     tracep->pushNamePrefix("sext ");
     tracep->declBus(c+4,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+5,"IN_WIDTH", false,-1, 31,0);
     tracep->declBus(c+1,"instr", false,-1, 31,0);
-    tracep->declBus(c+2,"immsrc", false,-1, 11,0);
+    tracep->declBus(c+2,"immsrc", false,-1, 1,0);
     tracep->declBus(c+3,"imm_out", false,-1, 31,0);
     tracep->popNamePrefix(1);
 }
@@ -64,8 +63,7 @@ VL_ATTR_COLD void Vsext___024root__trace_full_sub_0(Vsext___024root* vlSelf, Ver
     uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode);
     // Body
     bufp->fullIData(oldp+1,(vlSelf->instr),32);
-    bufp->fullSData(oldp+2,(vlSelf->immsrc),12);
+    bufp->fullCData(oldp+2,(vlSelf->immsrc),2);
     bufp->fullIData(oldp+3,(vlSelf->imm_out),32);
     bufp->fullIData(oldp+4,(0x20U),32);
-    bufp->fullIData(oldp+5,(0xcU),32);
 }

@@ -38,6 +38,7 @@ VL_ATTR_COLD void Vctr_unit___024root___ctor_var_reset(Vctr_unit___024root* vlSe
     vlSelf->RegWrite = VL_RAND_RESET_I(1);
     vlSelf->ALUctrl = VL_RAND_RESET_I(3);
     vlSelf->ALUsrc = VL_RAND_RESET_I(1);
-    vlSelf->ImmSrc = VL_RAND_RESET_I(12);
+    vlSelf->ImmSrc = VL_RAND_RESET_I(2);
     vlSelf->PCsrc = VL_RAND_RESET_I(1);
+    vlSelf->data_src = VL_RAND_RESET_I(1);
 }

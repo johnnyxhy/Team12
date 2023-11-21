@@ -25,7 +25,7 @@ class Vsext VL_NOT_FINAL : public VerilatedModel {
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
-    VL_IN16(&immsrc,11,0);
+    VL_IN8(&immsrc,1,0);
     VL_IN(&instr,31,0);
     VL_OUT(&imm_out,31,0);
 

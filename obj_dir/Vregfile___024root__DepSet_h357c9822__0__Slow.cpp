@@ -12,7 +12,7 @@ VL_ATTR_COLD void Vregfile___024root___settle__TOP__0(Vregfile___024root* vlSelf
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vregfile___024root___settle__TOP__0\n"); );
     // Body
     vlSelf->a0 = vlSelf->regfile__DOT__register_array
-        [0U];
+        [0xaU];
     vlSelf->rd1 = vlSelf->regfile__DOT__register_array
         [vlSelf->ad1];
     vlSelf->rd2 = vlSelf->regfile__DOT__register_array

@@ -13,7 +13,7 @@ class Vsext___024root final : public VerilatedModule {
   public:
 
     // DESIGN SPECIFIC STATE
-    VL_IN16(immsrc,11,0);
+    VL_IN8(immsrc,1,0);
     VL_IN(instr,31,0);
     VL_OUT(imm_out,31,0);
 

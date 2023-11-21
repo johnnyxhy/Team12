@@ -34,6 +34,6 @@ VL_ATTR_COLD void Vsext___024root___ctor_var_reset(Vsext___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsext___024root___ctor_var_reset\n"); );
     // Body
     vlSelf->instr = VL_RAND_RESET_I(32);
-    vlSelf->immsrc = VL_RAND_RESET_I(12);
+    vlSelf->immsrc = VL_RAND_RESET_I(2);
     vlSelf->imm_out = VL_RAND_RESET_I(32);
 }

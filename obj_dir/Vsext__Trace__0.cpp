@@ -24,7 +24,7 @@ void Vsext___024root__trace_chg_sub_0(Vsext___024root* vlSelf, VerilatedVcd::Buf
     uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode + 1);
     // Body
     bufp->chgIData(oldp+0,(vlSelf->instr),32);
-    bufp->chgSData(oldp+1,(vlSelf->immsrc),12);
+    bufp->chgCData(oldp+1,(vlSelf->immsrc),2);
     bufp->chgIData(oldp+2,(vlSelf->imm_out),32);
 }
 

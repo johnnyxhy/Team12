@@ -17,8 +17,9 @@ class Vctr_unit___024root final : public VerilatedModule {
     VL_OUT8(RegWrite,0,0);
     VL_OUT8(ALUctrl,2,0);
     VL_OUT8(ALUsrc,0,0);
+    VL_OUT8(ImmSrc,1,0);
     VL_OUT8(PCsrc,0,0);
-    VL_OUT16(ImmSrc,11,0);
+    VL_OUT8(data_src,0,0);
     VL_IN(instr,31,0);
 
     // INTERNAL VARIABLES

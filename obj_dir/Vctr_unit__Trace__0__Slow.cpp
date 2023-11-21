@@ -16,17 +16,19 @@ VL_ATTR_COLD void Vctr_unit___024root__trace_init_sub__TOP__0(Vctr_unit___024roo
     tracep->declBit(c+3,"RegWrite", false,-1);
     tracep->declBus(c+4,"ALUctrl", false,-1, 2,0);
     tracep->declBit(c+5,"ALUsrc", false,-1);
-    tracep->declBus(c+6,"ImmSrc", false,-1, 11,0);
+    tracep->declBus(c+6,"ImmSrc", false,-1, 1,0);
     tracep->declBit(c+7,"PCsrc", false,-1);
+    tracep->declBit(c+8,"data_src", false,-1);
     tracep->pushNamePrefix("ctr_unit ");
-    tracep->declBus(c+8,"IN_WIDTH", false,-1, 31,0);
+    tracep->declBus(c+9,"IN_WIDTH", false,-1, 31,0);
     tracep->declBit(c+1,"eq", false,-1);
     tracep->declBus(c+2,"instr", false,-1, 31,0);
     tracep->declBit(c+3,"RegWrite", false,-1);
     tracep->declBus(c+4,"ALUctrl", false,-1, 2,0);
     tracep->declBit(c+5,"ALUsrc", false,-1);
-    tracep->declBus(c+6,"ImmSrc", false,-1, 11,0);
+    tracep->declBus(c+6,"ImmSrc", false,-1, 1,0);
     tracep->declBit(c+7,"PCsrc", false,-1);
+    tracep->declBit(c+8,"data_src", false,-1);
     tracep->popNamePrefix(1);
 }
 
@@ -75,7 +77,8 @@ VL_ATTR_COLD void Vctr_unit___024root__trace_full_sub_0(Vctr_unit___024root* vlS
     bufp->fullBit(oldp+3,(vlSelf->RegWrite));
     bufp->fullCData(oldp+4,(vlSelf->ALUctrl),3);
     bufp->fullBit(oldp+5,(vlSelf->ALUsrc));
-    bufp->fullSData(oldp+6,(vlSelf->ImmSrc),12);
+    bufp->fullCData(oldp+6,(vlSelf->ImmSrc),2);
     bufp->fullBit(oldp+7,(vlSelf->PCsrc));
-    bufp->fullIData(oldp+8,(0x20U),32);
+    bufp->fullBit(oldp+8,(vlSelf->data_src));
+    bufp->fullIData(oldp+9,(0x20U),32);
 }

@@ -28,7 +28,7 @@ VL_INLINE_OPT void Vregfile___024root___sequent__TOP__0(Vregfile___024root* vlSe
             = __Vdlyvval__regfile__DOT__register_array__v0;
     }
     vlSelf->a0 = vlSelf->regfile__DOT__register_array
-        [0U];
+        [0xaU];
 }
 
 VL_INLINE_OPT void Vregfile___024root___combo__TOP__0(Vregfile___024root* vlSelf) {
