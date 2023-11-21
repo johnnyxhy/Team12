@@ -22,9 +22,9 @@ logic [WIDTH-1:0] aluop2;
 logic [WIDTH-1:0] regop2;
 logic [WIDTH-1:0] aluout;
 logic eq;
-logic [WIDTH-1:0] rs1;
-logic [WIDTH-1:0] rs2;
-logic [WIDTH-1:0] rd;
+logic [4:0] rs1 = instr[19:15];
+logic [4:0] rs2 = instr[24:20];
+logic [4:0] rd = instr[11:7];
 
 instr_mem my_instr_mem (
     .a(pc),
@@ -51,7 +51,8 @@ sext my_sext(
 mux2to1 my_mux2to1(
     .d0(regop2),
     .d1(immop),
-    .out(aluop2)
+    .out(aluop2),
+    .sel(ALUsrc)
 );
 
 //register file
@@ -71,10 +72,13 @@ alu my_alu(
     .aluop1(aluop1),
     .aluop2(aluop2),
     .aluout(aluout),
-    .eq(eq)
+    .eq(eq),
+    .aluctrl(ALUctrl)
 );
 
 PCReg my_PCReg(
+    .clk(clk),
+    .rst(rst),
     .PC(pc),
     .next_PC(next_pc)
 );
@@ -82,7 +86,8 @@ PCReg my_PCReg(
 PCsrc my_PCsrc(
     .branch_PC(branch_pc),
     .inc_PC(inc_pc),
-    .out(next_pc)
+    .out(next_pc),
+    .sel(PCsrc)
 );
 
 

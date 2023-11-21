@@ -28,10 +28,10 @@ VL_ATTR_COLD void Vriscv___024root___settle__TOP__0(Vriscv___024root* vlSelf) {
     // Body
     vlSelf->a0 = vlSelf->riscv__DOT__my_regfile__DOT__register_array
         [0U];
-    vlSelf->riscv__DOT__aluop1 = vlSelf->riscv__DOT__my_regfile__DOT__register_array
-        [(0x1fU & vlSelf->riscv__DOT__rs1)];
     vlSelf->riscv__DOT__instr = vlSelf->riscv__DOT__my_instr_mem__DOT__ram
         [(0x1fU & vlSelf->riscv__DOT__pc)];
+    vlSelf->riscv__DOT__aluop1 = vlSelf->riscv__DOT__my_regfile__DOT__register_array
+        [(0x1fU & (vlSelf->riscv__DOT__instr >> 0xfU))];
     if ((4U == (0x1fU & (vlSelf->riscv__DOT__instr 
                          >> 2U)))) {
         vlSelf->riscv__DOT__RegWrite = 1U;
@@ -53,21 +53,22 @@ VL_ATTR_COLD void Vriscv___024root___settle__TOP__0(Vriscv___024root* vlSelf) {
                                             (vlSelf->riscv__DOT__instr 
                                              >> 7U))));
     }
-    vlSelf->riscv__DOT__aluop2 = ((IData)(vlSelf->riscv__DOT__my_mux2to1__DOT__sel)
+    vlSelf->riscv__DOT__aluop2 = ((IData)(vlSelf->riscv__DOT__ALUsrc)
                                    ? (((- (IData)((1U 
                                                    & ((IData)(vlSelf->riscv__DOT__ImmSrc) 
                                                       >> 0xbU)))) 
                                        << 0xcU) | (IData)(vlSelf->riscv__DOT__ImmSrc))
                                    : vlSelf->riscv__DOT__my_regfile__DOT__register_array
-                                  [(0x1fU & vlSelf->riscv__DOT__rs2)]);
-    if ((0U == (IData)(vlSelf->riscv__DOT__my_alu__DOT__aluctrl))) {
+                                  [(0x1fU & (vlSelf->riscv__DOT__instr 
+                                             >> 0x14U))]);
+    if ((0U == (IData)(vlSelf->riscv__DOT__ALUctrl))) {
         vlSelf->riscv__DOT__aluout = (vlSelf->riscv__DOT__aluop1 
                                       + vlSelf->riscv__DOT__aluop2);
-    } else if ((1U != (IData)(vlSelf->riscv__DOT__my_alu__DOT__aluctrl))) {
+    } else if ((1U != (IData)(vlSelf->riscv__DOT__ALUctrl))) {
         vlSelf->riscv__DOT__aluout = 0U;
     }
-    if ((0U != (IData)(vlSelf->riscv__DOT__my_alu__DOT__aluctrl))) {
-        vlSelf->riscv__DOT__eq = ((1U == (IData)(vlSelf->riscv__DOT__my_alu__DOT__aluctrl)) 
+    if ((0U != (IData)(vlSelf->riscv__DOT__ALUctrl))) {
+        vlSelf->riscv__DOT__eq = ((1U == (IData)(vlSelf->riscv__DOT__ALUctrl)) 
                                   & (vlSelf->riscv__DOT__aluop1 
                                      == vlSelf->riscv__DOT__aluop2));
     }
@@ -86,12 +87,8 @@ VL_ATTR_COLD void Vriscv___024root___eval_initial(Vriscv___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv___024root___eval_initial\n"); );
     // Body
     Vriscv___024root___initial__TOP__0(vlSelf);
-    vlSelf->__Vm_traceActivity[3U] = 1U;
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->__Vm_traceActivity[1U] = 1U;
     vlSelf->__Vm_traceActivity[0U] = 1U;
-    vlSelf->__Vclklast__TOP__riscv__DOT__my_PCReg__DOT__clk 
-        = vlSelf->riscv__DOT__my_PCReg__DOT__clk;
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
 }
 
@@ -101,8 +98,6 @@ VL_ATTR_COLD void Vriscv___024root___eval_settle(Vriscv___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vriscv___024root___eval_settle\n"); );
     // Body
     Vriscv___024root___settle__TOP__0(vlSelf);
-    vlSelf->__Vm_traceActivity[3U] = 1U;
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->__Vm_traceActivity[1U] = 1U;
     vlSelf->__Vm_traceActivity[0U] = 1U;
 }
@@ -134,21 +129,13 @@ VL_ATTR_COLD void Vriscv___024root___ctor_var_reset(Vriscv___024root* vlSelf) {
     vlSelf->riscv__DOT__aluop2 = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__aluout = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__eq = VL_RAND_RESET_I(1);
-    vlSelf->riscv__DOT__rs1 = VL_RAND_RESET_I(32);
-    vlSelf->riscv__DOT__rs2 = VL_RAND_RESET_I(32);
-    vlSelf->riscv__DOT__rd = VL_RAND_RESET_I(32);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->riscv__DOT__my_instr_mem__DOT__ram[__Vi0] = VL_RAND_RESET_I(32);
     }
-    vlSelf->riscv__DOT__my_mux2to1__DOT__sel = VL_RAND_RESET_I(1);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->riscv__DOT__my_regfile__DOT__register_array[__Vi0] = VL_RAND_RESET_I(32);
     }
-    vlSelf->riscv__DOT__my_alu__DOT__aluctrl = VL_RAND_RESET_I(3);
-    vlSelf->riscv__DOT__my_PCReg__DOT__clk = VL_RAND_RESET_I(1);
-    vlSelf->riscv__DOT__my_PCReg__DOT__rst = VL_RAND_RESET_I(1);
-    vlSelf->riscv__DOT__my_PCsrc__DOT__sel = VL_RAND_RESET_I(1);
-    for (int __Vi0=0; __Vi0<4; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<2; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }
 }

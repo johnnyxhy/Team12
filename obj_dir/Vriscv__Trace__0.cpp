@@ -59,62 +59,68 @@ void Vriscv___024root__trace_chg_sub_0(Vriscv___024root* vlSelf, VerilatedVcd::B
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[1U])) {
         bufp->chgIData(oldp+32,(vlSelf->riscv__DOT__pc),32);
-        bufp->chgIData(oldp+33,(vlSelf->riscv__DOT__instr),32);
-        bufp->chgCData(oldp+34,(vlSelf->riscv__DOT__ALUctrl),3);
-        bufp->chgBit(oldp+35,(vlSelf->riscv__DOT__ALUsrc));
-        bufp->chgSData(oldp+36,(vlSelf->riscv__DOT__ImmSrc),12);
-        bufp->chgIData(oldp+37,((((- (IData)((1U & 
+        bufp->chgIData(oldp+33,(((IData)(vlSelf->riscv__DOT__PCsrc)
+                                  ? vlSelf->riscv__DOT__branch_pc
+                                  : vlSelf->riscv__DOT__inc_pc)),32);
+        bufp->chgIData(oldp+34,(vlSelf->riscv__DOT__instr),32);
+        bufp->chgBit(oldp+35,(vlSelf->riscv__DOT__RegWrite));
+        bufp->chgCData(oldp+36,(vlSelf->riscv__DOT__ALUctrl),3);
+        bufp->chgBit(oldp+37,(vlSelf->riscv__DOT__ALUsrc));
+        bufp->chgSData(oldp+38,(vlSelf->riscv__DOT__ImmSrc),12);
+        bufp->chgBit(oldp+39,(vlSelf->riscv__DOT__PCsrc));
+        bufp->chgIData(oldp+40,((((- (IData)((1U & 
                                               ((IData)(vlSelf->riscv__DOT__ImmSrc) 
                                                >> 0xbU)))) 
                                   << 0xcU) | (IData)(vlSelf->riscv__DOT__ImmSrc))),32);
+        bufp->chgIData(oldp+41,(vlSelf->riscv__DOT__aluop1),32);
+        bufp->chgIData(oldp+42,(vlSelf->riscv__DOT__aluop2),32);
+        bufp->chgIData(oldp+43,(vlSelf->riscv__DOT__my_regfile__DOT__register_array
+                                [(0x1fU & (vlSelf->riscv__DOT__instr 
+                                           >> 0x14U))]),32);
+        bufp->chgIData(oldp+44,(vlSelf->riscv__DOT__aluout),32);
+        bufp->chgBit(oldp+45,(vlSelf->riscv__DOT__eq));
+        bufp->chgCData(oldp+46,((0x1fU & (vlSelf->riscv__DOT__instr 
+                                          >> 0xfU))),5);
+        bufp->chgCData(oldp+47,((0x1fU & (vlSelf->riscv__DOT__instr 
+                                          >> 0x14U))),5);
+        bufp->chgCData(oldp+48,((0x1fU & (vlSelf->riscv__DOT__instr 
+                                          >> 7U))),5);
+        bufp->chgIData(oldp+49,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[0]),32);
+        bufp->chgIData(oldp+50,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[1]),32);
+        bufp->chgIData(oldp+51,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[2]),32);
+        bufp->chgIData(oldp+52,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[3]),32);
+        bufp->chgIData(oldp+53,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[4]),32);
+        bufp->chgIData(oldp+54,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[5]),32);
+        bufp->chgIData(oldp+55,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[6]),32);
+        bufp->chgIData(oldp+56,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[7]),32);
+        bufp->chgIData(oldp+57,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[8]),32);
+        bufp->chgIData(oldp+58,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[9]),32);
+        bufp->chgIData(oldp+59,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[10]),32);
+        bufp->chgIData(oldp+60,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[11]),32);
+        bufp->chgIData(oldp+61,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[12]),32);
+        bufp->chgIData(oldp+62,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[13]),32);
+        bufp->chgIData(oldp+63,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[14]),32);
+        bufp->chgIData(oldp+64,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[15]),32);
+        bufp->chgIData(oldp+65,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[16]),32);
+        bufp->chgIData(oldp+66,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[17]),32);
+        bufp->chgIData(oldp+67,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[18]),32);
+        bufp->chgIData(oldp+68,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[19]),32);
+        bufp->chgIData(oldp+69,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[20]),32);
+        bufp->chgIData(oldp+70,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[21]),32);
+        bufp->chgIData(oldp+71,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[22]),32);
+        bufp->chgIData(oldp+72,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[23]),32);
+        bufp->chgIData(oldp+73,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[24]),32);
+        bufp->chgIData(oldp+74,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[25]),32);
+        bufp->chgIData(oldp+75,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[26]),32);
+        bufp->chgIData(oldp+76,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[27]),32);
+        bufp->chgIData(oldp+77,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[28]),32);
+        bufp->chgIData(oldp+78,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[29]),32);
+        bufp->chgIData(oldp+79,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[30]),32);
+        bufp->chgIData(oldp+80,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[31]),32);
     }
-    if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
-        bufp->chgIData(oldp+38,(vlSelf->riscv__DOT__aluop1),32);
-        bufp->chgIData(oldp+39,(vlSelf->riscv__DOT__my_regfile__DOT__register_array
-                                [(0x1fU & vlSelf->riscv__DOT__rs2)]),32);
-        bufp->chgIData(oldp+40,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[0]),32);
-        bufp->chgIData(oldp+41,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[1]),32);
-        bufp->chgIData(oldp+42,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[2]),32);
-        bufp->chgIData(oldp+43,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[3]),32);
-        bufp->chgIData(oldp+44,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[4]),32);
-        bufp->chgIData(oldp+45,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[5]),32);
-        bufp->chgIData(oldp+46,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[6]),32);
-        bufp->chgIData(oldp+47,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[7]),32);
-        bufp->chgIData(oldp+48,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[8]),32);
-        bufp->chgIData(oldp+49,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[9]),32);
-        bufp->chgIData(oldp+50,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[10]),32);
-        bufp->chgIData(oldp+51,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[11]),32);
-        bufp->chgIData(oldp+52,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[12]),32);
-        bufp->chgIData(oldp+53,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[13]),32);
-        bufp->chgIData(oldp+54,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[14]),32);
-        bufp->chgIData(oldp+55,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[15]),32);
-        bufp->chgIData(oldp+56,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[16]),32);
-        bufp->chgIData(oldp+57,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[17]),32);
-        bufp->chgIData(oldp+58,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[18]),32);
-        bufp->chgIData(oldp+59,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[19]),32);
-        bufp->chgIData(oldp+60,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[20]),32);
-        bufp->chgIData(oldp+61,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[21]),32);
-        bufp->chgIData(oldp+62,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[22]),32);
-        bufp->chgIData(oldp+63,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[23]),32);
-        bufp->chgIData(oldp+64,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[24]),32);
-        bufp->chgIData(oldp+65,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[25]),32);
-        bufp->chgIData(oldp+66,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[26]),32);
-        bufp->chgIData(oldp+67,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[27]),32);
-        bufp->chgIData(oldp+68,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[28]),32);
-        bufp->chgIData(oldp+69,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[29]),32);
-        bufp->chgIData(oldp+70,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[30]),32);
-        bufp->chgIData(oldp+71,(vlSelf->riscv__DOT__my_regfile__DOT__register_array[31]),32);
-    }
-    if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[3U])) {
-        bufp->chgBit(oldp+72,(vlSelf->riscv__DOT__PCsrc));
-        bufp->chgIData(oldp+73,(vlSelf->riscv__DOT__aluop2),32);
-        bufp->chgIData(oldp+74,(vlSelf->riscv__DOT__aluout),32);
-        bufp->chgBit(oldp+75,(vlSelf->riscv__DOT__eq));
-    }
-    bufp->chgBit(oldp+76,(vlSelf->clk));
-    bufp->chgBit(oldp+77,(vlSelf->rst));
-    bufp->chgIData(oldp+78,(vlSelf->a0),32);
-    bufp->chgBit(oldp+79,(vlSelf->riscv__DOT__RegWrite));
+    bufp->chgBit(oldp+81,(vlSelf->clk));
+    bufp->chgBit(oldp+82,(vlSelf->rst));
+    bufp->chgIData(oldp+83,(vlSelf->a0),32);
 }
 
 void Vriscv___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {
@@ -126,6 +132,4 @@ void Vriscv___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {
     vlSymsp->__Vm_activity = false;
     vlSymsp->TOP.__Vm_traceActivity[0U] = 0U;
     vlSymsp->TOP.__Vm_traceActivity[1U] = 0U;
-    vlSymsp->TOP.__Vm_traceActivity[2U] = 0U;
-    vlSymsp->TOP.__Vm_traceActivity[3U] = 0U;
 }
