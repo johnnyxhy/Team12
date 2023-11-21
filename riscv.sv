@@ -23,9 +23,17 @@ logic [WIDTH-1:0] aluop2;
 logic [WIDTH-1:0] regop2;
 logic [WIDTH-1:0] aluout;
 logic eq;
-logic [4:0] rs1 = instr[19:15];
-logic [4:0] rs2 = instr[24:20];
-logic [4:0] rd = instr[11:7];
+logic [4:0] rs1;
+logic [4:0] rs2;
+logic [4:0] rd;
+
+//Assignments
+assign rs1 = instr[19:15];
+assign rs2 = instr[24:20];
+assign rd = instr[11:7];
+
+assign branch_pc = pc + immop;
+assign inc_pc = pc + {{WIDTH-3{1'b0}},3'b100};
 
 instr_mem my_instr_mem (
     .a(pc),
