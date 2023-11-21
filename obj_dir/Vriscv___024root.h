@@ -24,9 +24,9 @@ class Vriscv___024root final : public VerilatedModule {
     SData/*11:0*/ riscv__DOT__ImmSrc;
     VL_OUT(a0,31,0);
     IData/*31:0*/ riscv__DOT__pc;
-    IData/*31:0*/ riscv__DOT__branch_pc;
-    IData/*31:0*/ riscv__DOT__inc_pc;
+    IData/*31:0*/ riscv__DOT__next_pc;
     IData/*31:0*/ riscv__DOT__instr;
+    IData/*31:0*/ riscv__DOT__immop;
     IData/*31:0*/ riscv__DOT__aluop1;
     IData/*31:0*/ riscv__DOT__aluop2;
     IData/*31:0*/ riscv__DOT__aluout;

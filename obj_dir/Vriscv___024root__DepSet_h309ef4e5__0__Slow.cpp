@@ -53,11 +53,12 @@ VL_ATTR_COLD void Vriscv___024root___settle__TOP__0(Vriscv___024root* vlSelf) {
                                             (vlSelf->riscv__DOT__instr 
                                              >> 7U))));
     }
+    vlSelf->riscv__DOT__immop = (((- (IData)((1U & 
+                                              ((IData)(vlSelf->riscv__DOT__ImmSrc) 
+                                               >> 0xbU)))) 
+                                  << 0xcU) | (IData)(vlSelf->riscv__DOT__ImmSrc));
     vlSelf->riscv__DOT__aluop2 = ((IData)(vlSelf->riscv__DOT__ALUsrc)
-                                   ? (((- (IData)((1U 
-                                                   & ((IData)(vlSelf->riscv__DOT__ImmSrc) 
-                                                      >> 0xbU)))) 
-                                       << 0xcU) | (IData)(vlSelf->riscv__DOT__ImmSrc))
+                                   ? vlSelf->riscv__DOT__immop
                                    : vlSelf->riscv__DOT__my_regfile__DOT__register_array
                                   [(0x1fU & (vlSelf->riscv__DOT__instr 
                                              >> 0x14U))]);
@@ -79,6 +80,11 @@ VL_ATTR_COLD void Vriscv___024root___settle__TOP__0(Vriscv___024root* vlSelf) {
                                    >> 2U)))) {
         vlSelf->riscv__DOT__PCsrc = (1U & (~ (IData)(vlSelf->riscv__DOT__eq)));
     }
+    vlSelf->riscv__DOT__next_pc = ((IData)(vlSelf->riscv__DOT__PCsrc)
+                                    ? (vlSelf->riscv__DOT__pc 
+                                       + vlSelf->riscv__DOT__immop)
+                                    : ((IData)(4U) 
+                                       + vlSelf->riscv__DOT__pc));
 }
 
 VL_ATTR_COLD void Vriscv___024root___eval_initial(Vriscv___024root* vlSelf) {
@@ -117,14 +123,14 @@ VL_ATTR_COLD void Vriscv___024root___ctor_var_reset(Vriscv___024root* vlSelf) {
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->a0 = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__pc = VL_RAND_RESET_I(32);
-    vlSelf->riscv__DOT__branch_pc = VL_RAND_RESET_I(32);
-    vlSelf->riscv__DOT__inc_pc = VL_RAND_RESET_I(32);
+    vlSelf->riscv__DOT__next_pc = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__instr = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__RegWrite = VL_RAND_RESET_I(1);
     vlSelf->riscv__DOT__ALUctrl = VL_RAND_RESET_I(3);
     vlSelf->riscv__DOT__ALUsrc = VL_RAND_RESET_I(1);
     vlSelf->riscv__DOT__ImmSrc = VL_RAND_RESET_I(12);
     vlSelf->riscv__DOT__PCsrc = VL_RAND_RESET_I(1);
+    vlSelf->riscv__DOT__immop = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__aluop1 = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__aluop2 = VL_RAND_RESET_I(32);
     vlSelf->riscv__DOT__aluout = VL_RAND_RESET_I(32);

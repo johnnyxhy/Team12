@@ -24,9 +24,7 @@ VL_INLINE_OPT void Vriscv___024root___sequent__TOP__0(Vriscv___024root* vlSelf) 
             = (0x1fU & (vlSelf->riscv__DOT__instr >> 7U));
     }
     vlSelf->riscv__DOT__pc = ((IData)(vlSelf->rst) ? 0U
-                               : ((IData)(vlSelf->riscv__DOT__PCsrc)
-                                   ? vlSelf->riscv__DOT__branch_pc
-                                   : vlSelf->riscv__DOT__inc_pc));
+                               : vlSelf->riscv__DOT__next_pc);
     if (__Vdlyvset__riscv__DOT__my_regfile__DOT__register_array__v0) {
         vlSelf->riscv__DOT__my_regfile__DOT__register_array[__Vdlyvdim0__riscv__DOT__my_regfile__DOT__register_array__v0] 
             = __Vdlyvval__riscv__DOT__my_regfile__DOT__register_array__v0;
@@ -58,11 +56,12 @@ VL_INLINE_OPT void Vriscv___024root___sequent__TOP__0(Vriscv___024root* vlSelf) 
                                             (vlSelf->riscv__DOT__instr 
                                              >> 7U))));
     }
+    vlSelf->riscv__DOT__immop = (((- (IData)((1U & 
+                                              ((IData)(vlSelf->riscv__DOT__ImmSrc) 
+                                               >> 0xbU)))) 
+                                  << 0xcU) | (IData)(vlSelf->riscv__DOT__ImmSrc));
     vlSelf->riscv__DOT__aluop2 = ((IData)(vlSelf->riscv__DOT__ALUsrc)
-                                   ? (((- (IData)((1U 
-                                                   & ((IData)(vlSelf->riscv__DOT__ImmSrc) 
-                                                      >> 0xbU)))) 
-                                       << 0xcU) | (IData)(vlSelf->riscv__DOT__ImmSrc))
+                                   ? vlSelf->riscv__DOT__immop
                                    : vlSelf->riscv__DOT__my_regfile__DOT__register_array
                                   [(0x1fU & (vlSelf->riscv__DOT__instr 
                                              >> 0x14U))]);
@@ -84,6 +83,11 @@ VL_INLINE_OPT void Vriscv___024root___sequent__TOP__0(Vriscv___024root* vlSelf) 
                                    >> 2U)))) {
         vlSelf->riscv__DOT__PCsrc = (1U & (~ (IData)(vlSelf->riscv__DOT__eq)));
     }
+    vlSelf->riscv__DOT__next_pc = ((IData)(vlSelf->riscv__DOT__PCsrc)
+                                    ? (vlSelf->riscv__DOT__pc 
+                                       + vlSelf->riscv__DOT__immop)
+                                    : ((IData)(4U) 
+                                       + vlSelf->riscv__DOT__pc));
 }
 
 void Vriscv___024root___eval(Vriscv___024root* vlSelf) {
