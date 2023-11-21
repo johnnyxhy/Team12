@@ -48,7 +48,7 @@ int main(int argc, char **argv, char **env){
     vbdHex(1, int(top->a0) & 0xF);*/
 
     //test reset
-    if (i>300 && i<320){
+    if (i>300 && i<305){
         top->rst = 1;
     } else {
         top->rst = 0;

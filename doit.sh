@@ -13,6 +13,7 @@ verilator -Wall --cc --trace PCReg.sv --exe riscv_tb.cpp
 verilator -Wall --cc --trace PCsrc.sv --exe riscv_tb.cpp
 verilator -Wall --cc --trace regfile.sv --exe riscv_tb.cpp
 verilator -Wall --cc --trace sext.sv --exe riscv_tb.cpp
+verilator -Wall --cc --trace data_mem.sv --exe riscv_tb.cpp
 
 make -j -C obj_dir/ -f Vriscv.mk Vriscv
 
