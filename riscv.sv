@@ -8,14 +8,15 @@ module riscv #(
 
 logic [WIDTH-1:0] pc;
 logic [WIDTH-1:0] next_pc;
-logic [WIDTH-1:0] branch_pc;
-logic [WIDTH-1:0] inc_pc;
 logic [WIDTH-1:0] instr;
 logic RegWrite;
 logic [2:0] ALUctrl;
 logic ALUsrc;
-logic [11:0] ImmSrc;
+logic [1:0] ImmSrc;
 logic PCsrc;
+logic data_src;
+logic [WIDTH-1:0] data_in; 
+logic [WIDTH-1:0] data_out; 
 logic [WIDTH-1:0] immop;
 logic [WIDTH-1:0] aluop1;
 logic [WIDTH-1:0] aluop2;
@@ -38,7 +39,8 @@ ctr_unit my_ctr_unit (
     .ALUctrl(ALUctrl),
     .ALUsrc(ALUsrc),
     .ImmSrc(ImmSrc),
-    .PCsrc(PCsrc)
+    .PCsrc(PCsrc),
+    .data_src(data_src)
 );
 
 sext my_sext(
@@ -62,7 +64,7 @@ regfile my_regfile(
     .ad2(rs2),
     .ad3(rd), 
     .we3(RegWrite),
-    .wd3(aluout),
+    .wd3(data_in),
     .rd1(aluop1),
     .rd2(regop2),
     .a0(a0)
@@ -84,10 +86,17 @@ PCReg my_PCReg(
 );
     
 PCsrc my_PCsrc(
-    .branch_PC(branch_pc),
-    .inc_PC(inc_pc),
+    .branch_PC(pc+immop),
+    .inc_PC(pc+4),
     .out(next_pc),
     .sel(PCsrc)
+);
+
+assign data_in = data_src ? data_out : aluout;
+
+data_mem my_data_mem(
+    .a(aluout),
+    .rd(data_out)
 );
 
 
