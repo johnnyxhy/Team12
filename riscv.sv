@@ -95,9 +95,9 @@ PCReg my_PCReg(
     .next_PC(next_pc)
 );
     
-PCsrc my_PCsrc(
-    .branch_PC(branch_pc),
-    .inc_PC(inc_pc),
+    mux2to1 my_mux2to12(
+    .d1(branch_pc),
+    .d0(inc_pc),
     .out(next_pc),
     .sel(PCsrc)
 );
