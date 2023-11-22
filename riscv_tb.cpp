@@ -4,7 +4,6 @@
 #include "Vinstr_mem.h"
 #include "Vmux2to1.h"
 #include "VPCReg.h"
-#include "VPCsrc.h"
 #include "Vregfile.h"
 #include "Vsext.h"
 #include "verilated.h"

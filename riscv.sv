@@ -95,7 +95,7 @@ PCReg my_PCReg(
     .next_PC(next_pc)
 );
     
-    mux2to1 my_mux2to12(
+mux2to1 my_mux2to12(
     .d1(branch_pc),
     .d0(inc_pc),
     .out(next_pc),

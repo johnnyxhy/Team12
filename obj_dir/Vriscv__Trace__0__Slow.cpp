@@ -48,13 +48,6 @@ VL_ATTR_COLD void Vriscv___024root__trace_init_sub__TOP__0(Vriscv___024root* vlS
     tracep->declBus(c+34,"next_PC", false,-1, 31,0);
     tracep->declBus(c+33,"PC", false,-1, 31,0);
     tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("my_PCsrc ");
-    tracep->declBus(c+90,"Data_width", false,-1, 31,0);
-    tracep->declBus(c+49,"branch_PC", false,-1, 31,0);
-    tracep->declBus(c+50,"inc_PC", false,-1, 31,0);
-    tracep->declBit(c+40,"sel", false,-1);
-    tracep->declBus(c+34,"out", false,-1, 31,0);
-    tracep->popNamePrefix(1);
     tracep->pushNamePrefix("my_alu ");
     tracep->declBus(c+90,"Data_width", false,-1, 31,0);
     tracep->declBus(c+45,"aluop1", false,-1, 31,0);
@@ -99,6 +92,13 @@ VL_ATTR_COLD void Vriscv___024root__trace_init_sub__TOP__0(Vriscv___024root* vlS
     tracep->declBus(c+44,"d1", false,-1, 31,0);
     tracep->declBit(c+38,"sel", false,-1);
     tracep->declBus(c+46,"out", false,-1, 31,0);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("my_mux2to12 ");
+    tracep->declBus(c+90,"Data_width", false,-1, 31,0);
+    tracep->declBus(c+50,"d0", false,-1, 31,0);
+    tracep->declBus(c+49,"d1", false,-1, 31,0);
+    tracep->declBit(c+40,"sel", false,-1);
+    tracep->declBus(c+34,"out", false,-1, 31,0);
     tracep->popNamePrefix(1);
     tracep->pushNamePrefix("my_regfile ");
     tracep->declBus(c+90,"Data_width", false,-1, 31,0);
