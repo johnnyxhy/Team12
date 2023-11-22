@@ -15,7 +15,7 @@ Group members:
 
 ### Initialisation and Counting
 ![counting](/images/counting.jpg)
-We can see from the GTKWave that the CPU is initialising correctly, requiring 7 clock cycles for the first increments. Susequent increments required 3 clock cycles which was expected.
+We can see from the GTKWave that the CPU is initialising correctly, requiring 7 clock cycles for the first increments. Subsequent increments required 3 clock cycles which was expected.
 
 ### Reset
 ![rst](/images/rst.jpg)
