@@ -28,3 +28,8 @@ When the counter reached 255, the counter resets back to zero successfully. Thes
 ## Optional ``lw`` Instruction
 ![sine](/images/sine.jpg)
 The ``lw`` instruction was implemented. The instruction was tested on Vbuddy and the sine wave was successfully generated.
+
+## Challenges 
+
+## Reflections
+- Add comments to my commits on github
